@@ -6,7 +6,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=500&q=80",
     description: "Website e-commerce dengan fitur pembayaran dan pengelolaan produk. Dilengkapi dengan cart system, pembayaran online, dan dashboard admin untuk inventori.",
     technologies: ["Laravel", "Tailwindcss", "MySQL"],
-    link: "https://github.com/Fuadi-dev/sistem-aplikasi-kasir",
+    link: "https://github.com/Fuadi-dev/toko-online",
   },
   {
     title: "Portfolio Website",
@@ -14,7 +14,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=500&q=80",
     description: "Website portfolio personal untuk menampilkan karya dan skill. Dibangun dengan Vue.js dengan animasi menarik dan tampilan yang responsif untuk semua device.",
     technologies: ["HTML", "CSS", "Vue.js"],
-    link: "#",
+    link: "https://github.com/Fuadi-dev/portfolio-website",
   },
   {
     title: "To-Do List App",
@@ -38,7 +38,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=500&q=80",
     description: "Sistem kasir POS (Point of Sale) dengan fitur manajemen stok, pemrosesan transaksi, laporan penjualan, dan integrasi printer struk. Dioptimalkan untuk usaha kecil dan menengah.",
     technologies: ["Laravel", "Javascript", "MySQL"],
-    link: "#",
+    link: "https://github.com/Fuadi-dev/sistem-aplikasi-kasir",
   },
   {
     title: "Ticket Booking System",
@@ -46,7 +46,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=500&q=80",
     description: "Platform pemesanan tiket online dengan fitur pemilihan kursi, pembayaran digital, dan QR code untuk tiket elektronik. Diterapkan untuk event, transportasi, dan bioskop.",
     technologies: ["Flutter", "Laravel", "MySQL"],
-    link: "#",
+    link: "https://github.com/Fuadi-dev/piknikin",
   },
 ];
 </script>

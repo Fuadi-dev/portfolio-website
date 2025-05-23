@@ -36,7 +36,7 @@ onMounted(() => {
       <div class="hero-image fade-in">
         <div class="hero-image-container">
           <div class="placeholder-image glow">
-            <img src="../assets/profile/logo.png" alt="Avatar Daiyan Nur Fuadi" class="avatar-image" />
+            <img src="@../assets/profile/logo.png" alt="Avatar Daiyan Nur Fuadi" class="avatar-image" />
           </div>
         </div>
       </div>

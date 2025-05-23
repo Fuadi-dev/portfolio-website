@@ -22,7 +22,7 @@ const aboutData = {
       <div class="about-content">
         <div class="about-img">
           <div class="placeholder-image">
-            <img src="../assets/profile/profile.jpeg" alt="">
+            <img src="@../assets/profile/profile.jpeg" alt="">
           </div>
         </div>
         

@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { useAnimation } from '../composables/useAnimation';
 
 const formData = ref({
   name: '',
@@ -34,41 +35,43 @@ const submitForm = () => {
     }, 5000);
   }, 1500);
 };
+
+// Inisialisasi animasi
+useAnimation();
 </script>
 
 <template>
   <section id="contact" class="contact">
     <div class="container">
-      <div class="section-title">
+      <div class="section-title animate fade-in">
         <h2>Hubungi Saya</h2>
       </div>
       
       <div class="contact-content">
         <div class="contact-info">
-          <div class="contact-card">
+          <div class="contact-card animate slide-in-left delay-1">
             <i class="fas fa-map-marker-alt"></i>
             <h3>Lokasi</h3>
             <p>Yogyakarta, Indonesia</p>
           </div>
-          <div class="contact-card">
+          <div class="contact-card animate slide-in-left delay-2">
             <i class="fas fa-envelope"></i>
             <h3>Email</h3>
-            <p>daiyannurfuadi
-              @gmail.com</p>
+            <p>daiyannurfuadi@gmail.com</p>
           </div>
-          <div class="contact-card">
+          <div class="contact-card animate slide-in-left delay-3">
             <i class="fas fa-phone-alt"></i>
             <h3>Telepon</h3>
             <p>+62 823 2860 5554</p>
           </div>
-          <div class="contact-card">
+          <div class="contact-card animate slide-in-left delay-4">
             <i class="fas fa-clock"></i>
             <h3>Jam Kerja</h3>
             <p>Senin - Jumat: 08:00 - 17:00</p>
           </div>
         </div>
         
-        <div class="contact-form">
+        <div class="contact-form animate slide-in-right delay-2">
           <form @submit.prevent="submitForm">
             <div class="form-group">
               <input 

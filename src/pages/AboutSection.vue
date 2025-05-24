@@ -1,4 +1,6 @@
 <script setup>
+import { useAnimation } from '../composables/useAnimation';
+
 const aboutData = {
   name: "Daiyan Nur Fuadi",
   title: "Web and Mobile Developer",
@@ -10,54 +12,51 @@ const aboutData = {
   education: "SMK Jurusan RPL",
   languages: ["Indonesia", "Inggris"]
 };
+
+// Inisialisasi animasi
+useAnimation();
 </script>
 
 <template>
   <section id="about" class="about">
     <div class="container">
-      <div class="section-title">
+      <div class="section-title animate fade-in">
         <h2><span class="gradient-text">Tentang</span> Saya</h2>
       </div>
       
       <div class="about-content">
-        <div class="about-img">
+        <div class="about-img animate slide-in-left">
           <div class="placeholder-image">
             <img src="../assets/profile/profile.jpeg" alt="">
           </div>
         </div>
         
         <div class="about-text">
-          <h3>Saya adalah <span>{{ aboutData.title }}</span> berbasis di {{ aboutData.location }}</h3>
-          <p>{{ aboutData.bio }}</p>
+          <h3 class="animate fade-in">Saya adalah <span>{{ aboutData.title }}</span> berbasis di {{ aboutData.location }}</h3>
+          <p class="animate fade-in delay-1">{{ aboutData.bio }}</p>
           
           <div class="about-info">
-            <div class="info-item">
+            <div class="info-item animate fade-in delay-2">
               <p>Nama: <span>{{ aboutData.name }}</span></p>
             </div>
-            <div class="info-item">
+            <div class="info-item animate fade-in delay-3">
               <p>Email: <span>{{ aboutData.email }}</span></p>
             </div>
-            <div class="info-item">
+            <div class="info-item animate fade-in delay-4">
               <p>Telepon: <span>{{ aboutData.phone }}</span></p>
             </div>
-            <div class="info-item">
+            <div class="info-item animate fade-in delay-5">
               <p>Lokasi: <span>{{ aboutData.location }}</span></p>
             </div>
-            <!-- <div class="info-item">
-              <p>Freelance: <span>{{ aboutData.freelance }}</span></p>
-            </div>
-            <div class="info-item">
-              <p>Pengalaman: <span>{{ aboutData.experience }}</span></p>
-            </div> -->
-            <div class="info-item">
+            <div class="info-item animate fade-in delay-6">
               <p>Pendidikan: <span>{{ aboutData.education }}</span></p>
             </div>
-            <div class="info-item">
+            <div class="info-item animate fade-in delay-7">
               <p>Bahasa: <span>{{ aboutData.languages.join(", ") }}</span></p>
             </div>
           </div>
           
-          <div class="about-buttons">
+          <div class="about-buttons animate fade-in delay-8">
             <a href="#" class="btn primary">Download CV</a>
           </div>
         </div>

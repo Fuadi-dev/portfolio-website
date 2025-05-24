@@ -1,11 +1,13 @@
 <script setup>
+import { useAnimation } from '../composables/useAnimation';
+
 const achievements = [
   {
     title: "Juara 2 LKS Web Technology",
     category: "Tingkat Provinsi DIY",
     year: "2025",
     icon: "fa-trophy",
-    color: "primary" // primary color untuk prestasi utama
+    color: "primary"
   },
   {
     title: "Juara 2 Pencak Silat",
@@ -21,25 +23,29 @@ const achievements = [
     icon: "fa-award",
     color: "tertiary"
   },
-//   {
-//     title: "Peserta Marathon",
-//     category: "Mulyodadi Fast Run 5,7 km",
-//     year: "2022",
-//     icon: "fa-running",
-//     color: "quaternary"
-//   }
 ];
+
+// Inisialisasi animasi
+useAnimation();
 </script>
 
 <template>
   <section id="achievements" class="achievements">
     <div class="container">
-      <div class="section-title">
+      <div class="section-title animate fade-in">
         <h2><span class="accent-gradient-text">Prestasi</span> Saya</h2>
       </div>
       
       <div class="achievements-cards">
-        <div v-for="(achievement, index) in achievements" :key="index" class="achievement-card" :class="`achievement-${achievement.color}`">
+        <div 
+          v-for="(achievement, index) in achievements" 
+          :key="index" 
+          class="achievement-card animate scale-up" 
+          :class="[
+            `achievement-${achievement.color}`,
+            `delay-${index + 1}`
+          ]"
+        >
           <div class="achievement-icon">
             <i :class="['fas', achievement.icon]"></i>
           </div>

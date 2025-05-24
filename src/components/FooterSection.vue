@@ -1,12 +1,16 @@
 <script setup>
+import { useAnimation } from '../composables/useAnimation';
 const currentYear = new Date().getFullYear();
+
+// Inisialisasi animasi
+useAnimation();
 </script>
 
 <template>
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
-        <div class="footer-logo">
+        <div class="footer-logo animate fade-in">
           <h2>Portfolio.</h2>
           <p>Website portfolio modern dibuat dengan Vue.js</p>
           <div class="social-icons">
@@ -18,7 +22,7 @@ const currentYear = new Date().getFullYear();
         </div>
         
         <div class="footer-links">
-          <div class="footer-col">
+          <div class="footer-col animate fade-in delay-1">
             <h3>Menu</h3>
             <ul>
               <li><a href="#home">Beranda</a></li>
@@ -30,7 +34,7 @@ const currentYear = new Date().getFullYear();
             </ul>
           </div>
           
-          <div class="footer-col">
+          <div class="footer-col animate fade-in delay-2">
             <h3>Layanan</h3>
             <ul>
               <li><a href="#">Web Development</a></li>
@@ -40,7 +44,7 @@ const currentYear = new Date().getFullYear();
             </ul>
           </div>
           
-          <div class="footer-col">
+          <div class="footer-col animate fade-in delay-3">
             <h3>Kontak</h3>
             <ul class="footer-contact">
               <li><i class="fas fa-map-marker-alt"></i> Yogyakarta, Indonesia</li>
@@ -51,7 +55,7 @@ const currentYear = new Date().getFullYear();
         </div>
       </div>
       
-      <div class="footer-bottom">
+      <div class="footer-bottom animate fade-in delay-4">
         <p>&copy; {{ currentYear }} Portfolio Website. All Rights Reserved.</p>
         <p>Made with <i class="fas fa-heart"></i> by Fuadi-Developer</p>
       </div>

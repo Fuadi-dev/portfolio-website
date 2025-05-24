@@ -22,7 +22,7 @@ const navItems = [
   { text: 'Kontak', href: '#contact', id: 'contact' },
 ];
 
-// Tambahkan fungsi debounce di atas onMounted
+// Tambahkan fungsi debounce
 const debounce = (func, wait) => {
   let timeout;
   return function executedFunction(...args) {
@@ -35,33 +35,68 @@ const debounce = (func, wait) => {
   };
 };
 
+// Tambahkan fungsi untuk memeriksa posisi scroll awal
+const setInitialActiveSection = () => {
+  // Pastikan kita mulai dari home jika di puncak halaman
+  if (window.scrollY < 200) {
+    activeSection.value = 'home';
+    return;
+  }
+  
+  // Jika tidak di puncak, tentukan section berdasarkan posisi scroll
+  const scrollPosition = window.scrollY + window.innerHeight / 3;
+  
+  // Periksa dari bawah ke atas untuk mendapatkan section yang benar
+  for (let i = navItems.length - 1; i >= 0; i--) {
+    const section = document.getElementById(navItems[i].id);
+    if (section) {
+      const offsetTop = section.offsetTop;
+      if (scrollPosition >= offsetTop) {
+        activeSection.value = navItems[i].id;
+        break;
+      }
+    }
+  }
+};
+
 onMounted(() => {
   window.addEventListener('scroll', checkScroll);
   
-  // Setup Intersection Observer untuk mendeteksi section yang aktif
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      // Turunkan threshold menjadi 0.1 (10%) agar lebih responsif
-      if (entry.isIntersecting) {
-        activeSection.value = entry.target.id;
-        console.log('Aktif:', entry.target.id);
+  // Tunggu sedikit untuk memastikan DOM dan scroll selesai diproses
+  setTimeout(() => {
+    // Set active section berdasarkan posisi scroll awal
+    setInitialActiveSection();
+    
+    // Setelah itu baru setup observer
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Hanya aktifkan section jika benar-benar terlihat dengan baik
+        if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
+          activeSection.value = entry.target.id;
+        }
+      });
+    }, {
+      rootMargin: '-10% 0px -10% 0px', // Perkecil area observasi
+      threshold: [0.2] // Naikkan threshold
+    });
+    
+    // Observe semua section
+    navItems.forEach(item => {
+      const section = document.getElementById(item.id);
+      if (section) {
+        sectionObserver.observe(section);
       }
     });
-  }, {
-    rootMargin: '-5% 0px -5% 0px', // Perbesar area observasi
-    threshold: [0.05] // Turunkan threshold secara signifikan
-  });
-  
-  // Observe semua section yang ada di navItems
-  navItems.forEach(item => {
-    const section = document.getElementById(item.id);
-    if (section) {
-      sectionObserver.observe(section);
-    }
-  });
+  }, 200);
 
-  // Dalam onMounted, tambahkan pendekatan scroll manual dengan debounce
+  // Pendekatan scroll manual sebagai backup
   const handleScroll = debounce(() => {
+    // Jika di puncak halaman, aktifkan home
+    if (window.scrollY < 100) {
+      activeSection.value = 'home';
+      return;
+    }
+    
     // Ambil posisi scroll saat ini
     const scrollPosition = window.scrollY + window.innerHeight / 3;
     
@@ -70,7 +105,6 @@ onMounted(() => {
       const section = document.getElementById(navItems[i].id);
       if (section) {
         const offsetTop = section.offsetTop;
-        
         // Jika posisi scroll lebih dari posisi section, set sebagai aktif
         if (scrollPosition >= offsetTop) {
           activeSection.value = navItems[i].id;
@@ -78,9 +112,12 @@ onMounted(() => {
         }
       }
     }
-  }, 50); // 50ms debounce
+  }, 50);
 
   window.addEventListener('scroll', handleScroll);
+  
+  // Jalankan sekali lagi untuk memastikan
+  handleScroll();
 });
 
 onUnmounted(() => {

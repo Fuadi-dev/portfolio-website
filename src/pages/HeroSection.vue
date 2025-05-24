@@ -1,10 +1,14 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useAnimation } from '../composables/useAnimation';
+
 const name = "Daiyan Nur Fuadi";
 const title = ref("Web Developer");
-
 const titles = ["Web Developer", "Mobile Developer", "Full-Stack Developer", "UI/UX Designer", "Software Engineer"];
 let currentIndex = 0;
+
+// Inisialisasi animasi
+useAnimation();
 
 onMounted(() => {
   setInterval(() => {
@@ -18,22 +22,22 @@ onMounted(() => {
   <section id="home" class="hero">
     <div class="overlay"></div>
     <div class="container hero-container">
-      <div class="hero-content fade-in">
-        <h1>Halo, Saya <span class="accent-gradient-text">{{ name }}</span></h1>
-        <h2>Saya seorang <span class="typing gradient-text">{{ title }}</span></h2>
-        <p>Selamat datang di portfolio website saya. Saya membangun aplikasi web modern dengan performa tinggi dan antarmuka yang menarik.</p>
-        <div class="hero-buttons">
+      <div class="hero-content">
+        <h1 class="animate fade-in">Halo, Saya <span class="accent-gradient-text">{{ name }}</span></h1>
+        <h2 class="animate fade-in delay-1">Saya seorang <span class="typing gradient-text">{{ title }}</span></h2>
+        <p class="animate fade-in delay-2">Selamat datang di portfolio website saya. Saya membangun aplikasi web modern dengan performa tinggi dan antarmuka yang menarik.</p>
+        <div class="hero-buttons animate fade-in delay-3">
           <a href="#contact" class="btn primary">Hubungi Saya</a>
           <a href="#projects" class="btn secondary">Lihat Karya</a>
         </div>
-        <div class="social-icons">
+        <div class="social-icons animate fade-in delay-4">
           <a href="https://github.com/Fuadi-dev" target="_blank" class="github"><i class="fab fa-github"></i></a>
           <a href="https://wa.me/6282328605554" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
           <a href="https://www.instagram.com/da.1yan?igsh=MWxnYTA2OTk0bGJyeQ==" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
           <a href="https://t.me/+6282328605554" target="_blank" class="telegram"><i class="fab fa-telegram"></i></a>
         </div>
       </div>
-      <div class="hero-image fade-in">
+      <div class="hero-image animate scale-up delay-2">
         <div class="hero-image-container">
           <div class="placeholder-image glow">
             <img src="../assets/profile/logo.png" alt="Avatar Daiyan Nur Fuadi" class="avatar-image" />

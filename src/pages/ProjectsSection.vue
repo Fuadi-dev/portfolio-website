@@ -1,4 +1,6 @@
 <script setup>
+import { useAnimation } from '../composables/useAnimation';
+
 const projects = [
   {
     title: "E-Commerce Website",
@@ -49,17 +51,25 @@ const projects = [
     link: "https://github.com/Fuadi-dev/piknikin",
   },
 ];
+
+// Inisialisasi animasi
+useAnimation();
 </script>
 
 <template>
   <section id="projects" class="projects">
     <div class="container">
-      <div class="section-title">
+      <div class="section-title animate fade-in">
         <h2>Projek Saya</h2>
       </div>
       
       <div class="projects-grid">
-        <div v-for="(project, index) in projects" :key="index" class="project-card">
+        <div 
+          v-for="(project, index) in projects" 
+          :key="index" 
+          class="project-card animate fade-in"
+          :class="`delay-${Math.min(index + 1, 8)}`"
+        >
           <div class="project-img">
             <img :src="project.image" :alt="project.title">
           </div>

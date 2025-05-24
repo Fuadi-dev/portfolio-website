@@ -1,4 +1,7 @@
 <script setup>
+import { useAnimation } from '../composables/useAnimation';
+import { ref, onMounted } from 'vue';
+
 const skills = [
   { name: "HTML", percentage: 95 },
   { name: "Laravel", percentage: 90 },
@@ -9,17 +12,29 @@ const skills = [
   { name: "PHP", percentage: 80 },
   { name: "MySQL", percentage: 90 }
 ];
+
+const animateSkills = ref(false);
+
+// Inisialisasi animasi
+useAnimation();
+
+onMounted(() => {
+  // Tingkatkan delay untuk memastikan element sudah di-render
+  setTimeout(() => {
+    animateSkills.value = true;
+  }, 1000); 
+});
 </script>
 
 <template>
   <section id="skills" class="skills">
     <div class="container">
-      <div class="section-title">
+      <div class="section-title animate fade-in">
         <h2>Keahlian Saya</h2>
       </div>
       
       <div class="skills-content">
-        <div class="skills-description">
+        <div class="skills-description animate slide-in-left">
           <h3>Pengalaman & Keahlian</h3>
           <p>
             Saya telah mengembangkan berbagai aplikasi web dan mobile dengan teknologi modern.
@@ -28,13 +43,24 @@ const skills = [
         </div>
         
         <div class="skills-bars">
-          <div v-for="(skill, index) in skills" :key="index" class="skill-item">
+          <div 
+            v-for="(skill, index) in skills" 
+            :key="index" 
+            class="skill-item animate fade-in"
+            :class="'delay-' + (index % 7 + 1)"
+          >
             <div class="skill-header">
               <h4>{{ skill.name }}</h4>
               <h4>{{ skill.percentage }}%</h4>
             </div>
             <div class="skill-bar">
-              <div class="skill-percentage" :style="{ width: `${skill.percentage}%` }"></div>
+              <div 
+                class="skill-percentage" 
+                :style="{
+                  width: animateSkills ? `${skill.percentage}%` : '0%',
+                  backgroundColor: `var(--primary-color)`
+                }"
+              ></div>
             </div>
           </div>
         </div>
@@ -94,8 +120,14 @@ const skills = [
 
 .skill-percentage {
   height: 100%;
-  background-color: var(--primary-color);
   border-radius: 10px;
+  position: relative;
+  transition: width 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+@keyframes progressAnimation {
+  0% { width: 0%; }
+  100% { width: var(--target-width); }
 }
 
 @media (max-width: 900px) {

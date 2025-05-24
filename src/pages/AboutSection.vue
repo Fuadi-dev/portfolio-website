@@ -32,7 +32,7 @@ useAnimation();
         </div>
         
         <div class="about-text">
-          <h3 class="animate fade-in">Saya adalah <span>{{ aboutData.title }}</span> berbasis di {{ aboutData.location }}</h3>
+          <h3 class="animate fade-in">Saya adalah <span>{{ aboutData.title }}</span> berdomisili di {{ aboutData.location }}</h3>
           <p class="animate fade-in delay-1">{{ aboutData.bio }}</p>
           
           <div class="about-info">
